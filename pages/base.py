@@ -36,6 +36,15 @@ class WebPage(object):
         self._web_driver.get(url)
         self.wait_page_loaded()
 
+    def get_cookies(self):
+        cookies = self._web_driver.get_cookies()
+        return cookies
+
+
+    # def add_cookies(self, cookie):
+    #     self._web_driver.add_cookies(cookie_dict=cookie)
+
+
     def go_back(self):
         self._web_driver.back()
         self.wait_page_loaded()

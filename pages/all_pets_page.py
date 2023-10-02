@@ -9,13 +9,13 @@ from pages.elements import ManyWebElements
 class AllPetsPage(WebPage):
 
     def __init__(self, web_driver, url = ''):
-        url = 'https://petfriends.skillfactory.ru/all_pets'
+        url = 'https://petfriends.skillfactory.ru/'
         super().__init__(web_driver, url)
         with open('my_cookies.txt', 'rb') as cookiesfile:
             cookies = pickle.load(cookiesfile)
             for cookie in cookies:
                 web_driver.add_cookie(cookie)
-            web_driver.refresh()
+            web_driver.refresh();
 
 
 

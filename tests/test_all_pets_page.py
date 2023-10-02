@@ -6,6 +6,8 @@ from pages.all_pets_page import AllPetsPage
 from selenium.webdriver.common.action_chains import ActionChains
 
 def test_get_all_pets_page(web_browser):
+
+
     page = AllPetsPage(web_browser)
 
     assert page.get_current_url() == 'https://petfriends.skillfactory.ru/all_pets'

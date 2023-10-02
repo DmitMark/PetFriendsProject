@@ -1,6 +1,5 @@
 #!/usr/bin/python3
 # -*- encoding=utf8 -*-
-import pickle
 
 # This is example shows how we can manage failed tests
 # and make screenshots after any failed test case.
@@ -8,6 +7,7 @@ import pickle
 import pytest
 import allure
 import uuid
+
 
 
 
@@ -19,7 +19,6 @@ def chrome_options(chrome_options):
     chrome_options.add_argument('--log-level=DEBUG')
 
     return chrome_options
-
 
 @pytest.hookimpl(hookwrapper=True, tryfirst=True)
 def pytest_runtest_makereport(item, call):
@@ -118,7 +117,3 @@ def pytest_collection_finish(session):
 
         pytest.exit('Done!')
 
-@pytest.fixture
-def save_cookies(selenium, path):
-    with open(path, 'wb') as my_cookies:
-        pickle.dump(selenium.get_cookies(), my_cookies)
