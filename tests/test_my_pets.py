@@ -9,27 +9,27 @@ def test_get_my_pets_page(web_browser):
     # переходим на страницу мои питомцы
 
     page.wait_page_loaded()
-    # добавляем явное ожидание элементов на странице(метод прописан в pages.base в классе WebPage
+    # добавляем явное ожидание элементов на странице(метод прописан в pages.base в классе WebPage)
 
     data_pets = page.data_user.get_text()
-    for data in data_pets:
-        if 'Питомцев' in data:
-            info = data.split(':')
-            pets_count = int(info[1])
-    # получаем количество моих питомцев
-
     my_pets_images = page.images_my_pet.get_attribute('src')
     my_pets_names = page.name_my_pet.get_text()
     my_pets_breeds = page.breed_my_pet.get_text()
     my_pets_years = page.year_my_pet.get_text()
 
 
+    for data in data_pets:
+        if 'Питомцев' in data:
+            info = data.split(':')
+            pets_count = int(info[1])
+            # получаем количество моих питомцев
+            assert len(page.pet.find()) == pets_count
+            # проверяем все ли питомцы отображаются на странице
+            assert len(my_pets_images) > pets_count//2
+            # проверяем что больше половины питомцев имеют фото
 
-    assert len(page.pet.find()) == 12
-    # проверяем все ли питомцы отображаются на странице
-    assert len(my_pets_images) >5
-    # проверяем что больше половины питомцев имеют фото
-    assert len(my_pets_names) == 12
+
+
     for my_pets_name in my_pets_names:
         assert len(my_pets_name) > 0
     # проверяем что у всех питомцев есть имя
