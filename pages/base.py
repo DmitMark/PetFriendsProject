@@ -36,6 +36,15 @@ class WebPage(object):
         self._web_driver.get(url)
         self.wait_page_loaded()
 
+    def get_cookies(self):
+        cookies = self._web_driver.get_cookies()
+        return cookies
+
+
+    # def add_cookies(self, cookie):
+    #     self._web_driver.add_cookies(cookie_dict=cookie)
+
+
     def go_back(self):
         self._web_driver.back()
         self.wait_page_loaded()
@@ -103,6 +112,10 @@ class WebPage(object):
                         break
 
                 assert ignore, 'JS error "{0}" on the page!'.format(log_message)
+
+    def implicitly_wait(self, timeout=10):
+        self._web_driver.implicitly_wait(timeout)
+
 
     def wait_page_loaded(self, timeout=60, check_js_complete=True,
                          check_page_changes=False, check_images=False,
