@@ -1,7 +1,5 @@
-# python -m pytest -v --driver Chrome --driver-path C:\chromedriver.exe tests/test_all_pets_page.py
+# python -m pytest -v --driver chrome --driver-path c:\chromedriver.exe tests/test_all_pets_page.py
 
-import pytest
-import time, pickle
 from pages.all_pets_page import AllPetsPage
 from selenium.webdriver.common.action_chains import ActionChains
 
@@ -10,4 +8,22 @@ def test_get_all_pets_page(web_browser):
 
     page = AllPetsPage(web_browser)
 
-    assert page.get_current_url() == 'https://petfriends.skillfactory.ru/all_pets'
+    images = page.images.get_attribute('src')
+    names = page.names.get_text()
+    descriptions = page.descriptions.get_text()
+
+    for image in images:
+        assert image != ''
+
+    for name in names:
+        assert name != ''
+
+    for description in descriptions:
+        assert description != ''
+        parts = description.split(',')
+        assert len(parts[0]) > 0
+        assert len(parts[1]) > 0
+
+
+
+
