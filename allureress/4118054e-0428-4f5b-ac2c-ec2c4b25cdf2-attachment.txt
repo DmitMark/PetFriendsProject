@@ -1,0 +1,4 @@
+Element not found on the page!
+Error: 'NoneType' object has no attribute 'text'
+URL:  https://petfriends.skillfactory.ru/my_pets
+Browser logs:

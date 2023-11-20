@@ -1,0 +1,4 @@
+Element not clickable!
+Element not visible!
+URL:  https://petfriends.skillfactory.ru/
+Browser logs:
