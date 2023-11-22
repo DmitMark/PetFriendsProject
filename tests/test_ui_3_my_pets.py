@@ -1,8 +1,9 @@
-# python -m pytest -v --driver chrome --driver-path c:\chromedriver.exe --alluredir=allureress tests\test_my_pets.py
+# python -m pytest -v --driver chrome --driver-path c:\chromedriver.exe --alluredir=allureress tests\test_ui_3_my_pets.py
 
 from pages.my_pets_page import MyPetsPage
 
 def test_get_my_pets_page(web_browser):
+    ### тест проверки начилия питомцев пользователя ###
 
     page = MyPetsPage(web_browser)
     page.btn_my_pets.click()

@@ -9,7 +9,6 @@ class AuthPage(WebPage):
         super().__init__(web_driver, url)
 
     email = WebElement(id='email')
-
     password = WebElement(id='pass')
-
     btn = WebElement(class_name='btn.btn-success')
+    alert = WebElement(class_name='alert.alert-danger')

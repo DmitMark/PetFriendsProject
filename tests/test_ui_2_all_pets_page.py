@@ -1,13 +1,13 @@
-# python -m pytest -v --driver chrome --driver-path c:\chromedriver.exe --alluredir=allureress tests/test_all_pets_page.py
+# python -m pytest -v --driver chrome --driver-path c:\chromedriver.exe --alluredir=allureress tests/test_ui_2_all_pets_page.py
 
 from pages.all_pets_page import AllPetsPage
 
 def test_get_all_pets_page(web_browser):
+    # тест наличия у всех карточек фото,имени и описания
 
 
     page = AllPetsPage(web_browser)
     page.implicitly_wait()
-    # добавлено неявное ожидание написанием соответствующего метода в WebPage
 
     images = page.images.get_attribute('src')
     names = page.names.get_text()

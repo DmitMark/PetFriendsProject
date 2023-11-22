@@ -113,7 +113,7 @@ class WebPage(object):
 
                 assert ignore, 'JS error "{0}" on the page!'.format(log_message)
 
-    def implicitly_wait(self, timeout=10):
+    def implicitly_wait(self, timeout=3):
         self._web_driver.implicitly_wait(timeout)
 
 
