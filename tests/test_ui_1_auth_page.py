@@ -8,7 +8,7 @@ from pages.auth_page import AuthPage
 
 
 def test_valid_auth(web_browser):
-    ### тест авторизации с валидными данными ###
+    """ Tест авторизации с валидными данными"""
 
     page = AuthPage(web_browser)
 
@@ -27,7 +27,7 @@ def test_valid_auth(web_browser):
     assert page.get_current_url() == 'https://petfriends.skillfactory.ru/all_pets'
 
 def test_invalid_mail_auth(web_browser):
-    ### тест авторизации с невалидным email ###
+    """ Tест авторизации с невалидным email"""
 
     page = AuthPage(web_browser)
 
@@ -39,7 +39,7 @@ def test_invalid_mail_auth(web_browser):
     assert page.alert.find() is not None
 
 def test_invalid_mail_auth(web_browser):
-    ### тест авторизации с невалидным паролем ###
+    """ Tест авторизации с невалидным паролем"""
 
     page = AuthPage(web_browser)
 

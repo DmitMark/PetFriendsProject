@@ -3,8 +3,7 @@
 from pages.all_pets_page import AllPetsPage
 
 def test_get_all_pets_page(web_browser):
-    # тест наличия у всех карточек фото,имени и описания
-
+    """ Tест наличия у всех карточек фото,имени и описания"""
 
     page = AllPetsPage(web_browser)
     page.implicitly_wait()
