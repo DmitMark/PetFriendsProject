@@ -51,6 +51,16 @@ class PetFriendsApi:
         headers = {'auth_key': auth_key['key'], 'Content-type': data.content_type}
         return requests.post(self.base_url+'api/pets', headers=headers, data=data)
 
+    def add_photo_pet(self, auth_key, pet_id, pet_photo):
+
+        data = MultipartEncoder(
+            fields={
+                'pet_photo': (pet_photo, open(pet_photo, 'rb'), 'image/jpeg')
+            }
+        )
+        headers = {'auth_key': auth_key['key'], 'Content-type': data.content_type}
+        return requests.post(self.base_url + 'api/pets/set_photo/'+pet_id, headers=headers, data=data)
+
     def delete_pet(self, auth_key, pet_id):
         """Метод отправляет на сервер запрос на удаление питомца по указанному ID и возвращает
             статус запроса и результат в формате JSON с текстом уведомления о успешном удалении.
