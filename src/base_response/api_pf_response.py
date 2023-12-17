@@ -10,8 +10,14 @@ class Base_pf_response:
         self.response_status = response.status_code
 
     def assert_status_code(self, status_code):
+        """ Проверяем код запроса"""
         assert self.response_status == status_code
 
     def validate(self, schema):
+        """ Валидируем ответ с помощью схемы в pydantic"""
         schema.model_validate(self.response_json)
         return self
+
+    def assert_message(self, message):
+        """ Проверяем что в ответе содержится нужный текст"""
+        assert message in self.response_json

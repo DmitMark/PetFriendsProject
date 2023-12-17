@@ -1,22 +1,24 @@
 import requests
+import json
 from requests_toolbelt.multipart.encoder import MultipartEncoder
 
 class PetFriendsApi:
     """API библиотека к веб приложению Pet Friends"""
     def __init__(self):
-        self.base_url = 'https://petfriends.skillfactory.ru/'
+        self.base_url = "https://petfriends.skillfactory.ru/"
 
     def get_api_key(self, email, password):
         """Метод делает запрос к API сервера и возвращает статус запроса и результат в формате
-                   JSON с уникальным ключем пользователя, найденного по указанным email(str) и паролем(str)
-                   Статусы запроса:
-                   200 - A secret key which can be used in Header "auth_key" for other API methods
-                   403 - The error code means that provided combination of user email and password is incorrect"""
+           JSON с уникальным ключем пользователя, найденного по указанным email(str) и паролем(str)
+           Статусы запроса:
+           200 - A secret key which can be used in Header "auth_key" for other API methods
+           403 - The error code means that provided combination of user email and password is incorrect"""
+
         headers = {
             'email': email,
             'password': password
         }
-        return requests.get(self.base_url+'/api/key', headers=headers)
+        return requests.get(self.base_url+'api/key', headers=headers)
 
 
     def get_list_of_pets(self, auth_key, filter):
