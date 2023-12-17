@@ -4,7 +4,7 @@ from api.api_pf import PetFriendsApi
 from src.schemas.pets_friends_schema import Auth_key, Pets, Pet
 from src.base_response.api_pf_response import Base_pf_response
 from test_data.settings import (valid_email, valid_password, invalid_email, invalid_password, user_not_found,
-                                invalid_key, inv_key_mess, name_pet, type_pet, age_pet, photo_pet)
+                                invalid_key, inv_key_mess, name_pet, type_pet, age_pet, photo_pet, photo_pet_invalid)
 
 
 pf = PetFriendsApi()
@@ -58,9 +58,21 @@ def test_get_my_pets_with_valid_key(filter='my_pets'):
     response = Base_pf_response(pf.get_list_of_pets(auth_key, filter))
     response.validate(Pets)
 
-def test_add_new_pet_with_valid_key(name=name_pet, animal_type=type_pet, age=age_pet, pet_photo = photo_pet):
+def test_add_new_pet_with_valid_key_valid_data(name=name_pet, animal_type=type_pet, age=age_pet, pet_photo = photo_pet):
 
     auth_key = pf.get_api_key(valid_email, valid_password).json()
     response = Base_pf_response(pf.add_new_pet(auth_key, name, animal_type, age, pet_photo))
     response.assert_status_code(200)
     response.validate(Pet)
+
+def test_add_new_pet_with_invalid_key_valid_data(name=name_pet, animal_type=type_pet, age=age_pet, pet_photo = photo_pet):
+
+    response = Base_pf_response(pf.add_new_pet(invalid_key, name, animal_type, age, pet_photo))
+    response.assert_status_code(403)
+
+def test_add_new_pet_with_valid_key_invalid_data(name=name_pet, animal_type=type_pet, age=age_pet, pet_photo = photo_pet_invalid):
+
+    auth_key = pf.get_api_key(valid_email, valid_password).json()
+    response = Base_pf_response(pf.add_new_pet(auth_key, name, animal_type, age, pet_photo))
+    response.assert_status_code(400)
+

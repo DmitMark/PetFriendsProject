@@ -14,5 +14,6 @@ name_pet = "Jack"
 type_pet = "dog"
 age_pet = '3'
 photo_pet = os.path.join(os.path.dirname(__file__), 'dog1.jpg')
+photo_pet_invalid = os.path.join(os.path.dirname(__file__), 'dog3.ico')
 
 
