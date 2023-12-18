@@ -13,6 +13,7 @@ inv_key_mess = 'Please provide &#x27;auth_key&#x27; Header'
 name_pet = "Jack"
 type_pet = "dog"
 age_pet = '3'
+age_pet_invalid = 'two'
 photo_pet = os.path.join(os.path.dirname(__file__), 'dog1.jpg')
 photo_pet_invalid = os.path.join(os.path.dirname(__file__), 'dog3.ico')
 
