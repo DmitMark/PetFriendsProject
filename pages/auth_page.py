@@ -10,5 +10,8 @@ class AuthPage(WebPage):
 
     email = WebElement(id='email')
     password = WebElement(id='pass')
-    btn = WebElement(class_name='btn.btn-success')
+    btn_login = WebElement(class_name='btn.btn-success')
     alert = WebElement(class_name='alert.alert-danger')
+    btn_new_user = WebElement(xpath='/html/body/div/div/form/div[3]/a')
+
+    btn_PetFriends = WebElement(class_name='navbar-brand.header2')

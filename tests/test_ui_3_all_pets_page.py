@@ -1,4 +1,4 @@
-# python -m pytest -v --driver chrome --driver-path c:\chromedriver.exe --alluredir=allureress tests/test_ui_2_all_pets_page.py
+# python -m pytest -v --driver chrome --driver-path c:\chromedriver.exe --alluredir=allureress tests/test_ui_3_all_pets_page.py
 
 from pages.all_pets_page import AllPetsPage
 
