@@ -20,6 +20,7 @@ class AllPetsPage(WebPage):
 
 
     btn_my_pets = WebElement(xpath='//*[@id="navbarNav"]/ul[1]/li[1]/a[1]')
+    btb_all_pets = WebPage(css_selector='div#navbarNav > ul > li:nth-of-type(2) > a')
     title = WebElement(xpath='//body/div[1]/div[1]/h1[1]')
 
     images = ManyWebElements(css_selector='.card-deck.card-img-top')

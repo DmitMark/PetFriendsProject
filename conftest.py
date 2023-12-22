@@ -7,7 +7,8 @@
 import pytest
 import allure
 import uuid
-
+from api.api_pf import PetFriendsApi
+from test_data.settings import valid_email, valid_password
 
 
 
@@ -117,3 +118,8 @@ def pytest_collection_finish(session):
 
         pytest.exit('Done!')
 
+@pytest.fixture
+def get_api_key():
+    auth_key = PetFriendsApi().get_api_key(valid_email, valid_password).json()
+
+    yield auth_key

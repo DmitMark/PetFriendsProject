@@ -24,6 +24,8 @@ def test_get_all_pets_page(web_browser):
         assert len(parts[0]) > 0
         assert len(parts[1]) > 0
 
+def test_btn_all_pets(web_browser):
 
+    page = AllPetsPage(web_browser)
 
 

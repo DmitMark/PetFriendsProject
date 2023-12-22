@@ -31,10 +31,11 @@ def test_get_api_key_with_invalid_password(email=valid_email, password=invalid_p
     response.assert_status_code(403)
     response.assert_message(user_not_found)
 
-def test_get_all_pets(filter=''):
+def test_get_all_pets(get_api_key, filter=''):
     """ Запрос списка всех питомцев с использованием валидных данных."""
 
-    auth_key = pf.get_api_key(valid_email, valid_password).json()
+    # auth_key = pf.get_api_key(valid_email, valid_password).json()
+    auth_key = get_api_key
     response = Base_pf_response(pf.get_list_of_pets(auth_key, filter))
     response.validate(Pets)
 
@@ -45,10 +46,11 @@ def test_get_all_pets_with_invalid_key(filter=''):
     response.assert_status_code(403)
     response.assert_message(inv_key_mess)
 
-def test_get_my_pets(filter='my_pets'):
+def test_get_my_pets(get_api_key,filter='my_pets'):
     """Запрос списка питомцев пользователя с использованием валидных данных."""
 
-    auth_key = pf.get_api_key(valid_email, valid_password).json()
+    # auth_key = pf.get_api_key(valid_email, valid_password).json()
+    auth_key = get_api_key
     response = Base_pf_response(pf.get_list_of_pets(auth_key, filter))
     response.validate(Pets)
 
